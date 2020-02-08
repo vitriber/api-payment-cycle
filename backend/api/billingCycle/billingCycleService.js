@@ -4,10 +4,12 @@ const BillingCycle = require('./billingCycle')
 BillingCycle.methods(['get', 'post', 'put', 'delete'])
 BillingCycle.updateOptions({new: true, runValidators: true})
 
+//Valindo se o método tem erros
+
 BillingCycle.after('post', sendErrorsOrNext).after('put', sendErrorsOrNext)
 
 function sendErrorsOrNext(req, res, next) {
-  const bundle = res.locals.bundle
+  const bundle = res.locals.bundle //Se existir erros bundle: salva os erros
 
   if(bundle.errors) {
     var errors = parseErrors(bundle.errors)
