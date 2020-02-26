@@ -2,3 +2,4 @@ backend/node_modules
 angular1/node_modules
 public
 *.log
+backend/.env
